@@ -85,8 +85,9 @@ See the section about (https://vuejs.org/v2/cookbook/unit-testing-vue-components
 
 ---
 
-## Known issues
-
+## User test 
+user: eve.holt@reqres.in
+password: cityslicka
 
 ---
 
