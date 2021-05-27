@@ -20,7 +20,6 @@ class AuthService extends AuthBaseService {
 
   logout () {
     localStorage.clear()
-    location.reload();
   }
 
   setToken (token) {

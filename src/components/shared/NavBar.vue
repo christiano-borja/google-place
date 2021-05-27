@@ -1,5 +1,6 @@
 <template>
   <b-navbar type="is-black">
+    <b-loading :is-full-page="isFullPage" v-model="isLocalLoading" :can-cancel="true" />
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
         <img
@@ -20,7 +21,7 @@
           Edit
         </b-navbar-item>
         <b-navbar-item >
-          <span  @click="logoutAction()">Logout</span>
+          <span  @click="logout()">Logout</span>
         </b-navbar-item>
       </b-navbar-dropdown>
     </template>
@@ -28,9 +29,19 @@
 </template>
   
 <script>
-import { mapActions, mapMutations } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'NavBar',
+
+  data() {
+		return {
+			isFullPage: false
+		}
+	},
+
+  computed: {
+		...mapGetters('user', ['isLocalLoading']),
+  },
 
   methods: {
     ...mapActions('auth', ['logoutAction']),
@@ -38,6 +49,12 @@ export default {
 		setUpdateUser () {
 			this.COMPONENT_ON('updateUser')
 		},
+    async logout() {
+      await this.logoutAction()
+        .then(() => {
+          this.$router.push({ path: '/' })
+        })
+    }
   }
 
 }
