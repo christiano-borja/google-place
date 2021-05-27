@@ -78,7 +78,7 @@ npm run lint
 ### `Test`
 Launches the test runner.
 ```
-npm run test:unit
+npm run test
 ```
 See the section about (https://vuejs.org/v2/cookbook/unit-testing-vue-components.html) for more information.
 
